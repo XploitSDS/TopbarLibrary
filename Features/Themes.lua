@@ -264,9 +264,9 @@ function Themes.set(icon, theme)
 	themesJanitor:add(icon.stateChanged:Connect(function()
 		Themes.change(icon)
 	end))
-	if typeof(theme) == "Instance" and theme:IsA("ModuleScript") then
-		theme = require(theme)
-	end
+	--if typeof(theme) == "Instance" and theme:IsA("ModuleScript") then
+		theme = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/"..theme..".lua")())
+	--end
 	icon.appliedTheme = theme
 	Themes.rebuild(icon)
 end
