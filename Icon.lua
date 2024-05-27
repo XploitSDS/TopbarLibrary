@@ -53,7 +53,7 @@ local Players = game:GetService("Players")
 -- Multiple Icons packages may exist at runtime (for instance if the developer additionally uses HD Admin)
 -- therefore this ensures that the first required package becomes the dominant and only functioning module
 local iconModule = script
-local Reference = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Reference.lua")())
+local Reference = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Reference.lua"))())
 local referenceObject = Reference.getObject()
 local leadPackage = referenceObject and referenceObject.Value
 if leadPackage and leadPackage ~= iconModule then
@@ -66,12 +66,12 @@ end
 
 
 -- MODULES
-local Signal = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/GoodSignal.lua")())
-local Janitor = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/Janitor.lua")())
-local Utility = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua")())
-local Themes = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Themes.lua")())
-local Gamepad = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Gamepad.lua")())
-local Overflow = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Overflow.lua")())
+local Signal = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/GoodSignal.lua"))())
+local Janitor = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/Janitor.lua"))())
+local Utility = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua"))())
+local Themes = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Themes.lua"))())
+local Gamepad = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Gamepad.lua"))())
+local Overflow = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Overflow.lua"))())
 local Icon = {}
 Icon.__index = Icon
 
@@ -79,7 +79,6 @@ Icon.__index = Icon
 
 --- LOCAL
 local localPlayer = Players.LocalPlayer
-local themes = iconModule.Features.Themes
 local playerGui = localPlayer:WaitForChild("PlayerGui")
 local iconsDict = {}
 local anyIconSelected = Signal.new()
@@ -101,10 +100,10 @@ end
 -- PUBLIC VARIABLES
 Icon.baseDisplayOrderChanged = Signal.new()
 Icon.baseDisplayOrder = 10
-Icon.baseTheme = require(themes.Default)
+Icon.baseTheme = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Default.lua"))())
 Icon.isOldTopbar = GuiService.TopbarInset.Height == 36
 Icon.iconsDictionary = iconsDict
-Icon.container = require(elements.Container)(Icon)
+Icon.container = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Container.lua")))(Icon)
 Icon.topbarEnabled = true
 Icon.iconAdded = Signal.new()
 Icon.iconRemoved = Signal.new()
@@ -174,7 +173,7 @@ for _, screenGui in pairs(Icon.container) do
 	screenGui.Parent = playerGui
 end
 if Icon.isOldTopbar then
-	Icon.modifyBaseTheme(require(themes.Classic))
+	--Icon.modifyBaseTheme(require(themes.Classic))
 end
 
 
@@ -257,7 +256,7 @@ function Icon.new()
 	self.creationTime = os.clock()
 
 	-- Widget is the new name for an icon
-	local widget = janitor:add(require(elements.Widget)(self, Icon))
+	local widget = janitor:add(require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Widget.lua")))(self, Icon))
 	self.widget = widget
 	self:setAlignment()
 	
@@ -709,7 +708,7 @@ function Icon:notify(customClearSignal, noticeId)
 	-- Roblox event (e.g. Instance.new("BindableEvent").Event)
 	local notice = self.notice
 	if not notice then
-		notice = require(elements.Notice)(self, Icon)
+		notice = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Notice.lua")))(self, Icon)
 		self.notice = notice
 	end
 	self.noticeStarted:Fire(customClearSignal, noticeId)
@@ -981,7 +980,7 @@ function Icon:setCaption(text)
 		self.captionText = nil
 		return self
 	end
-	local caption = captionJanitor:add(require(elements.Caption)(self))
+	local caption = captionJanitor:add(require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Caption.lua")))(self))
 	caption:SetAttribute("CaptionText", text)
 	self.caption = caption
 	self.captionText = text
@@ -1038,7 +1037,7 @@ end
 function Icon:getDropdown()
 	local dropdown = self.dropdown
 	if not dropdown then
-		dropdown = require(elements.Dropdown)(self)
+		dropdown = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Dropdown.lua")))(self)
 		self.dropdown = dropdown
 		self:clipOutside(dropdown)
 	end
@@ -1068,7 +1067,7 @@ function Icon:setIndicator(keyCode)
 	-- to set an indicator for controllers as this is handled internally within the Gamepad module
 	local indicator = self.indicator
 	if not indicator then
-		indicator = self.janitor:add(require(elements.Indicator)(self, Icon))
+		indicator = self.janitor:add(require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Indicator.lua")))(self, Icon))
 		self.indicator = indicator
 	end
 	self.indicatorSet:Fire(keyCode)
