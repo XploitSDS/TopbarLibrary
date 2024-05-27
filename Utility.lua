@@ -146,7 +146,7 @@ function Utility.getClippedContainer(screenGui)
 	return clippedContainer
 end
 
-local Janitor = require(script.Parent.Packages.Janitor)
+local Janitor = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/Janitor.lua")())
 local GuiService = game:GetService("GuiService")
 function Utility.clipOutside(icon, instance)
 	local cloneJanitor = icon.janitor:add(Janitor.new())
