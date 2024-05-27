@@ -13,7 +13,7 @@ local iconsDict
 local currentCamera = workspace.CurrentCamera
 local overflowIcons = {}
 local overflowIconUIDs = {}
-local Utility = require(script.Parent.Parent.Utility)
+local Utility = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua")())
 local Icon
 
 
