@@ -45,8 +45,8 @@ function Gamepad.start(incomingIcon)
 		local iconDisplayingHighlightKey
 		local usedIndicatorOnce = false
 		local usedBOnce = false
-		local Utility = require(script.Parent.Parent.Utility)
-		local Selection = require(script.Parent.Parent.Elements.Selection)
+		local Utility = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua")())
+		local Selection = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Elements/Selection.lua")())
 		local function updateSelectedObject()
 			local icon = getIconFromSelectedObject()
 			local gamepadEnabled = UserInputService.GamepadEnabled
