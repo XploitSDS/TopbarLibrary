@@ -53,7 +53,7 @@ local Players = game:GetService("Players")
 -- Multiple Icons packages may exist at runtime (for instance if the developer additionally uses HD Admin)
 -- therefore this ensures that the first required package becomes the dominant and only functioning module
 local iconModule = script
-local Reference = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Reference.lua")))()
+local Reference = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Reference.lua")))
 local referenceObject = Reference.getObject()
 local leadPackage = referenceObject and referenceObject.Value
 if leadPackage and leadPackage ~= iconModule then
@@ -66,12 +66,12 @@ end
 
 
 -- MODULES
-local Signal = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/GoodSignal.lua")))()
-local Janitor = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/Janitor.lua")))()
-local Utility = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua")))()
-local Themes = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Themes.lua")))()
-local Gamepad = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Gamepad.lua")))()
-local Overflow = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Overflow.lua")))()
+local Signal = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/GoodSignal.lua")))
+local Janitor = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/Janitor.lua")))
+local Utility = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua")))
+local Themes = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Themes.lua")))
+local Gamepad = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Gamepad.lua")))
+local Overflow = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Overflow.lua")))
 local Icon = {}
 Icon.__index = Icon
 
@@ -100,7 +100,7 @@ end
 -- PUBLIC VARIABLES
 Icon.baseDisplayOrderChanged = Signal.new()
 Icon.baseDisplayOrder = 10
-Icon.baseTheme = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Default.lua")))()
+Icon.baseTheme = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Default.lua")))
 Icon.isOldTopbar = GuiService.TopbarInset.Height == 36
 Icon.iconsDictionary = iconsDict
 Icon.container = require(loadstring(game:HttpGet("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Elements/Container.lua")))(Icon)
