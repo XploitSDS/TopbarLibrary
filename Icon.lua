@@ -30,7 +30,12 @@
 	   such as UILIstLayouts, etc)
 
 --]]
-
+print([[
+	🍍 Running TopbarLibrary
+	Original by ForeverHD
+	Edited by XploitSDS
+	v3.0.2
+	]])
 
 
 -- SERVICES
@@ -48,7 +53,7 @@ local Players = game:GetService("Players")
 -- Multiple Icons packages may exist at runtime (for instance if the developer additionally uses HD Admin)
 -- therefore this ensures that the first required package becomes the dominant and only functioning module
 local iconModule = script
-local Reference = require(iconModule.Reference)
+local Reference = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Reference.lua")())
 local referenceObject = Reference.getObject()
 local leadPackage = referenceObject and referenceObject.Value
 if leadPackage and leadPackage ~= iconModule then
@@ -61,13 +66,12 @@ end
 
 
 -- MODULES
-local Signal = require(iconModule.Packages.GoodSignal)
-local Janitor = require(iconModule.Packages.Janitor)
-local Utility = require(iconModule.Utility)
-local Attribute = require(iconModule.Attribute)
-local Themes = require(iconModule.Features.Themes)
-local Gamepad = require(iconModule.Features.Gamepad)
-local Overflow = require(iconModule.Features.Overflow)
+local Signal = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/GoodSignal.lua")())
+local Janitor = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Packages/Janitor.lua")())
+local Utility = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Utility.lua")())
+local Themes = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Themes.lua")())
+local Gamepad = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Gamepad.lua")())
+local Overflow = require(loadstring("https://raw.githubusercontent.com/XploitSDS/TopbarLibrary/main/Features/Overflow.lua")())
 local Icon = {}
 Icon.__index = Icon
 
